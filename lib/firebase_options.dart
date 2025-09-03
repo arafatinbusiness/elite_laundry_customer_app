@@ -65,7 +65,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '264965810934',
     projectId: 'elite-laundry-station',
     storageBucket: 'elite-laundry-station.firebasestorage.app',
-    iosBundleId: 'com.example.eliteLaundryCustomerApp',
+    iosBundleId: 'com.labinitial.eliteLaundryCustomerApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
@@ -74,7 +74,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '264965810934',
     projectId: 'elite-laundry-station',
     storageBucket: 'elite-laundry-station.firebasestorage.app',
-    iosBundleId: 'com.example.eliteLaundryCustomerApp',
+    iosBundleId: 'com.labinitial.eliteLaundryCustomerApp',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
