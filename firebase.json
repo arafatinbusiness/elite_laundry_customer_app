@@ -1,0 +1,49 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "elite-laundry-station",
+          "appId": "1:264965810934:android:dd3c7e1cdcdc438d081ad7",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "elite-laundry-station",
+          "configurations": {
+            "android": "1:264965810934:android:dd3c7e1cdcdc438d081ad7",
+            "ios": "1:264965810934:ios:ce74e4c7e583b134081ad7",
+            "macos": "1:264965810934:ios:ce74e4c7e583b134081ad7",
+            "web": "1:264965810934:web:184af033f99b1f69081ad7",
+            "windows": "1:264965810934:web:50bdc94fd7383815081ad7"
+          }
+        }
+      }
+    }
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ]
+    },
+    {
+      "source": "recaptcha-functions",
+      "codebase": "recaptcha-functions",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ]
+    }
+  ]
+}

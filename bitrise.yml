@@ -1,0 +1,80 @@
+---
+format_version: '11'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: flutter
+
+app:
+  envs:
+  - FLUTTER_VERSION: "3.29.0"
+  - FLUTTER_HOME: /Users/vagrant/flutter
+
+workflows:
+  primary:
+    steps:
+    - activate-ssh-key@4:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@7: {}
+    - cache-pull@2: {}
+    - script@1:
+        title: Setup Flutter
+        inputs:
+        - content: |-
+            #!/bin/bash
+            set -ex
+            export PATH="$FLUTTER_HOME/bin:$PATH"
+            flutter --version
+            flutter doctor -v
+    - flutter-installer@2:
+        inputs:
+        - flutter_version: "$FLUTTER_VERSION"
+    - cache-push@2: {}
+    - script@1:
+        title: Install dependencies
+        inputs:
+        - content: |-
+            #!/bin/bash
+            set -ex
+            export PATH="$FLUTTER_HOME/bin:$PATH"
+            flutter pub get
+    - flutter-analyze@2:
+        inputs:
+        - project_location: "."
+    - flutter-test@2:
+        inputs:
+        - project_location: "."
+    - certificate-and-profile-installer@2: {}
+    - flutter-build@2:
+        inputs:
+        - project_location: "."
+        - platform: ios
+        - ios_output_type: archive
+        - ios_configuration: Release
+    - deploy-to-bitrise-io@2: {}
+    - script@1:
+        title: Export IPA
+        inputs:
+        - content: |-
+            #!/bin/bash
+            set -ex
+            # Find and export the built IPA
+            IPA_PATH=$(find build -name "*.ipa" | head -1)
+            if [ -n "$IPA_PATH" ]; then
+                envman add --key BITRISE_IPA_PATH --value "$IPA_PATH"
+                echo "IPA found at: $IPA_PATH"
+            else
+                echo "No IPA file found"
+                exit 1
+            fi
+
+trigger_map:
+- push_branch: main
+  workflow: primary
+- pull_request_source_branch: feature/*
+  workflow: primary
+- pull_request_source_branch: develop
+  workflow: primary
+
+meta:
+  bitrise.io:
+    stack: osx-xcode-15.2.x
+    machine_type_id: g2-m1.4core

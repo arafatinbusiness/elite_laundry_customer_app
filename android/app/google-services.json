@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "264965810934",
+    "project_id": "elite-laundry-station",
+    "storage_bucket": "elite-laundry-station.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:264965810934:android:dd3c7e1cdcdc438d081ad7",
+        "android_client_info": {
+          "package_name": "com.example.elite_laundry_customer_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAluwy5MHmxqtA-dPXtc6ynxzFODZixFJo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:264965810934:android:7463d6a2a30c22b3081ad7",
+        "android_client_info": {
+          "package_name": "com.example.labinitial_laundry_service_system"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAluwy5MHmxqtA-dPXtc6ynxzFODZixFJo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
